@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+
+layout:decorator="layouts/main.html">
+<title layout:fragment="title">News</title>
+
+<div layout:fragment = "contentPart">
+
+
+    <div style="width:100%; height:200px; background-color: lime">
+
+        <img src='images/back.jpg' width="100%" height="100%" alt="hello">
+    </div>
+
+
+    <div class="col-12 add_post mt-5" style="margin:auto" sec:authorize="isAuthenticated()">
+        <form th:action="${'/addPost'}" method="post">
+            <div class="form-group">
+                <br>
+                <label for="exampleFormControlInput1" th:text = "#{label.tittle}"></label>
+                <input type="text" name="title" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="form-group">
+                <label for="image" th:text = "#{label.image}"></label>
+                <input type="text" name="image" class="form-control" id="image">
+            </div>
+            <div class="form-group">
+                <label th:text = "#{label.shortcontent}"></label>
+                <input class="form-control" name="shortContent" rows="2">
+            </div>
+            <div class="form-group">
+                <label th:text = "#{label.content}"></label>
+                <textarea class="form-control" name="content" rows="3"></textarea>
+            </div>
+            <div style="text-align: right">
+                <button class="btn btn-outline-success html-editor-align-right" th:text = "#{label.addpost}"></button>
+            </div>
+        </form>
+    </div>
+<br><br><br><br>
+
+    <div class="container">
+        <div class="well" th:each="post : ${allNews}">
+            <div class="media">
+                <a class="pull-left" th:href="@{'newsPage/'+${post.id}}">
+                    <img class="media-object" th:src="${post.image}" width="150" height="150">
+                </a>
+                <div class="media-body">
+                    <a th:href="@{'newsPage/'+${post.id}}">
+                    <h3 class="media-heading" th:text="${post.title}"></h3>
+                    </a>
+                    <h5 class="text-right" th:text="${'By '+post.author.name + ' ' + post.author.surname}"></h5>
+                    <p  th:text="${post.content}"></p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span th:value="${post.postDate}"><i class="glyphicon glyphicon-calendar"></i> </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 3 comments</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<br><br><br><br>
+</div>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="shortcut icon" href="https://logodix.com/logo/460720.png" />
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:18px">
+        <a style="margin-left:50px" class="navbar-brand" th:href="@{/}"><img style="width:60px; height:60px" src="https://logodix.com/logo/460720.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+
+            <ul class="navbar-nav mr-auto" sec:authorize = "isAnonymous()">
+                <li class="nav-item active" >
+                    <a th:href="@{/}" class="nav-link"><span style="font-size:20px"  th:text = "#{label.home}"></span></a>
+                </li>
+                <li class="nav-item active" >
+                    <a th:href="@{'/users_list'}" class="nav-link"><span style="font-size:20px"  th:text = "#{label.user_list}"></span></a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav mr-auto" sec:authorize = "isAuthenticated()">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}" style="font-size:20px" th:text = "#{label.home}"> <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link"  th:href="@{'/profile_admin'}" th:text = "#{label.admin_panel}"></a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_MODERATOR')">
+                    <a class="nav-link"  th:href="@{'/profile_moderator'}" th:text = "#{label.moder_panel}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  th:href="@{'/profile'}" th:text = "#{label.profile}"></a>
+                </li>
+                <li class="nav-item" >
+                    <a th:href="@{'/users_list'}" class="nav-link" th:text = "#{label.user_list}"></a>
+                </li>
+                <li class="nav-item" >
+                    <a th:href="@{'/chat'}" class="nav-link" th:text = "#{label.chat}"></a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" th:action = "@{'/exit'}" id = "logoutForm1">
+            </form>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <ul class="navbar-nav mr-auto " sec:authorize = "isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:gray;" href="JavaScript:void(0)" onclick="logout1()" th:text = "#{label.logout}"></a>
+                    </li>
+                    <script type="text/javascript">
+                        function logout1(){
+                            document.getElementById("logoutForm1").submit();
+                        }
+                    </script>
+                </ul>
+                <ul class="navbar-nav mr-auto" sec:authorize = "isAnonymous()">
+                    <li class="nav-item">
+                        <a th:href="@{'/auth_reg'}" class="nav-link"  th:text = "#{label.reglog}"></a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
+
+
+
+</head>
+<body >
+
+
+<div class="nav-item dropdown" style="margin-right: 0px; width: 100px">
+    <a class="nav-link dropdown-toggle" th:href="@{'?lang=en'}" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Language</span></a>
+    <div class="dropdown-menu" aria-labelledby="dropdown09">
+        <a class="dropdown-item" th:href="@{'?lang=ru'}"><span class="flag-icon flag-icon-ru"> </span>  Russian</a>
+        <a class="dropdown-item" th:href="@{'?lang=en'}"><span class="flag-icon flag-icon-us"> </span>  English</a>
+
+    </div>
+</div>
+
+<title layout:fragment="title">Main</title>
+
+
+
+<div  layout:fragment = "contentPart" >
+</div>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="left-col">
+            <img src="blacklogo.png" alt="" class="logo">
+
+            <p class="rights-text">© 2020 Created By Rakhatali All Rights Reserved.</p>
+        </div>
+
+        <div class="center-col">
+            <h1  class="rights-text">Contacts</h1>
+            <div class="linee"></div>
+            <p class="rights-text"> +7(777)977-67-89</p>
+
+
+        </div>
+        <div class="right-col">
+            <h1 >Our Newsletter</h1>
+            <div class="linee"></div>
+            <p class="rights-text">Enter Your Email to get our news and updates.</p>
+            <form action="" class="newsletter-form">
+                <input type="text" class="txtb" placeholder="Enter Your Email">
+                <input type="submit" class="btn" value="submit">
+            </form>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+
+
+
+
+</html>
+

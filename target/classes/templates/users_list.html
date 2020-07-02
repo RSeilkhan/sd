@@ -1,0 +1,165 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+      layout:decorator="layouts/main.html">
+<title layout:fragment="title">News</title>
+<div layout:fragment = "contentPart">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+
+
+
+
+    <div class="container" style="margin-top: 80px;">
+        <div class="row" style="margin-left: 4%;">
+            <div class="h-100 col-auto" style="margin-top:10px;">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar">
+                        <input class="search_input" type="search" name="" id="myInput1" aria-label="Username"  onkeyup="search_name()" th:placeholder="#{label.search_name}">
+                        <span class="search_icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="h-100 col-auto" style="margin-top:10px;">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" name="" id="myInput" aria-label="Username"  aria-describedby="basic-addon1" onkeyup="search_city()" th:placeholder="#{label.search_city}">
+                        <span class="search_icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="hover-table-layout" id="myTable">
+            <div class="listing-item col-md-3 col-sm-6" th:each="u : ${allUsers}" style="margin-left: 5px">
+                <figure class="image">
+                    <a th:href="@{'users/'+${u.email}}">
+                        <img th:src="${u.avatar}">
+                    </a>
+                </figure>
+                <div class="listing">
+                    <h3 th:text="${u.name + ' ' + u.surname}"></h3>
+                    <h4 th:text="${u.birthday}" ></h4>
+                    <h4 th:text="${u.city}"></h4>
+                    <h4 th:text="${u.tel_number}"></h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+
+    </script>
+    <script>
+
+        function age_filter1() {
+            var filter, table, tr, td, i, txtValue;
+            var min = document.getElementById("min");
+            var max = document.getElementById("max");
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("h4")[0];
+                td=parseInt(td);
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (( isNaN( min ) && isNaN( max )) ||
+                        ( isNaN( min ) && td <= max ) ||
+                        ( min <= td   && isNaN( max )) ||
+                        ( min <= td   && td <= max )) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        };
+
+        function search_city() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("div");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("h4")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function search_name() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput1");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("div");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("h3")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .searchbar{
+            margin-bottom: auto;
+            margin-top: auto;
+            height: 1%;
+            background-color: #353b48;
+            border-radius: 30px;
+            padding: 0 0 0 8%;
+        }
+        .searchbar:hover > .search_icon{
+            background: white;
+            color: #353b48;
+        }
+        .search_input{
+            color: white;
+            border: 0;
+            outline: 0;
+            background: none;
+            width: 80%;
+            caret-color:transparent;
+            line-height: 40px;
+            transition: width 0.4s linear;
+        }
+
+
+
+        .search_icon{
+            height: 40px;
+            width: 40px;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color:white;
+            text-decoration:none;
+        }</style>
+</div> <!--CONTENT DIV-->
+
+</body>
+</html>

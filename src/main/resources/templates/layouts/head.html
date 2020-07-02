@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="https://logodix.com/logo/460720.png" />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <script src="../js/main.js"></script>
+
+    <h1>HELLO</h1>
+    <div id="slideout-menu">
+        <ul sec:authorize = "isAnonymous()">
+            <li>
+                <a th:href="@{/}" th:text = "#{label.home}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/auth_reg'}" th:text = "#{label.reglog}"></a>
+            </li>
+
+        </ul>
+        <ul sec:authorize = "isAuthenticated()">
+            <li>
+                <a th:href="@{/}" th:text = "#{label.home}"></a>
+            </li>
+            <li>
+                <a  th:href="@{/profile}" th:text = "#{label.profile}"></a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                <a  th:href="@{/profile_admin}" th:text = "#{label.admin_panel}"></a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_MODERATOR')">
+                <a  th:href="@{/profile_moderator" th:text = "#{label.moder_panel}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/chat'}" th:text = "#{label.chat}"></a>
+            </li>
+            <form  th:action = "@{'/exit'}" id = "logoutForm1">
+            </form>
+            <li>
+                <script type="text/javascript">
+                    function logout1(){
+                        document.getElementById("logoutForm1").submit();
+                    }
+                </script>
+                <a href="JavaScript:void(0)" onclick="logout1()" th:text = "#{label.logout}"></a>
+            </li>
+
+        </ul>
+    </div>
+
+    <nav>
+        <div id="logo-img">
+            <a th:href="@{/}">
+                <img src="https://logodix.com/logo/460720.png" alt="GTCoding Logo">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fa fa-bars"></i>
+        </div>
+        <ul sec:authorize = "isAnonymous()">
+            <li>
+                <a class="active" th:href="@{/}" th:text = "#{label.home}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/auth_reg'}" th:text = "#{label.reglog}"></a>
+            </li>
+
+
+        </ul>
+        <ul sec:authorize = "isAuthenticated()">
+            <li>
+                <a th:href="@{/}" th:text = "#{label.home}"></a>
+            </li>
+            <li>
+                <a  th:href="@{/profile}" th:text = "#{label.profile}"></a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                <a  th:href="@{/profile_admin}" th:text = "#{label.admin_panel}"></a>
+            </li>
+            <li sec:authorize="hasRole('ROLE_MODERATOR')">
+                <a  th:href="@{/profile_moderator" th:text = "#{label.moder_panel}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
+            </li>
+            <li>
+                <a th:href="@{'/chat'}" th:text = "#{label.chat}"></a>
+            </li>
+            <form  th:action = "@{'/exit'}" id = "logoutForm1">
+            </form>
+            <li>
+                <div id="logout-icon">
+                    <a href="JavaScript:void(0)" onclick="logout1()"><i class="fa fa-sign-out"></i></a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+</head>
+<body >
+
+
+<div class="nav-item dropdown" style="margin-right: 0px; width: 100px">
+    <a class="nav-link dropdown-toggle" th:href="@{'?lang=en'}" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Language</span></a>
+    <div class="dropdown-menu" aria-labelledby="dropdown09">
+        <a class="dropdown-item" th:href="@{'?lang=ru'}"><span class="flag-icon flag-icon-ru"> </span>  Russian</a>
+        <a class="dropdown-item" th:href="@{'?lang=en'}"><span class="flag-icon flag-icon-us"> </span>  English</a>
+
+    </div>
+</div>
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="left-col">
+            <img src="blacklogo.png" alt="" class="logo">
+
+            <p class="rights-text">© 2020 Created By Rakhatali All Rights Reserved.</p>
+        </div>
+
+        <div class="center-col">
+            <h1  class="rights-text">Contacts</h1>
+            <div class="linee"></div>
+            <p class="rights-text"> +7(777)977-67-89</p>
+
+
+        </div>
+        <div class="right-col">
+            <h1 >Our Newsletter</h1>
+            <div class="linee"></div>
+            <p class="rights-text">Enter Your Email to get our news and updates.</p>
+            <form action="" class="newsletter-form">
+                <input type="text" class="txtb" placeholder="Enter Your Email">
+                <input type="submit" class="btn" value="submit">
+            </form>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script>
+    const menuIcon = document.getElementById("menu-icon");
+    const slideoutMenu = document.getElementById("slideout-menu");
+    menuIcon.addEventListener('click', function () {
+        if (slideoutMenu.style.opacity == "1") {
+            slideoutMenu.style.opacity = '0';
+            slideoutMenu.style.pointerEvents = 'none';
+        } else {
+            slideoutMenu.style.opacity = '1';
+            slideoutMenu.style.pointerEvents = 'auto';
+        }
+    })
+</script>
+
+
+
+</html>
+

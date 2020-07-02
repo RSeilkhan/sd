@@ -1,0 +1,316 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorator="layouts/main.html">
+<title layout:fragment="title">News Post</title>
+<div layout:fragment = "contentPart">
+    <div class="post">
+        <br>
+        <img class="post_ava" th:src="${post.author.avatar}" alt="">
+<br>
+        <div class="row center">
+            <div class="col-lg-8 center">
+            <h1 class="mt-4" th:text="${post.title}"></h1>
+            <p class="lead" th:text="${post.author.name + ' ' + post.author.surname}"></p>
+                <p class="lead"  th:text="${post.postDate}"></p>
+                     <hr class="my-4">
+                <img class="img-fluid rounded" th:src="${post.image}" alt="">
+                <p class="lead" th:text="${post.shortContent}"></p>
+                <h4 style="margin-bottom: 30px;" class="lead" th:text="${post.content}"></h4>
+
+            <div class="row float-right" th:if="${#authentication.name.equals(post.author.email)}">
+
+                <form th:action="${'/deletePost'}" method="post">
+                    <input type="hidden" name="id" th:value="${post.id}">
+                    <button type="submit" class="btn btn-outline-danger" th:text = "#{label.delete}"></button>
+                </form>
+
+                <button style="margin-bottom: 30px;" type="button" class="btn btn-outline-success ml-3" data-toggle="modal" data-target="#exampleModalCenter2" th:text = "#{label.edit}">
+
+                </button>
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" th:text = "#{label.edit}"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form th:action="${'/editPost'}" method="post">
+                                <input type="hidden" name="id" th:value="${post.id}">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label th:text = "#{label.tittle}"></label>
+                                        <input type="text" name="title" class="form-control" th:placeholder="${post.title}" th:value="${post.title}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label  th:text = "#{label.shortcontent}"></label>
+                                        <textarea class="form-control" name="shortContent" rows="2" th:placeholder="${post.shortContent}" th:text="${post.shortContent}"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label th:text = "#{label.content}"></label>
+                                        <textarea class="form-control" name="content" rows="3" th:placeholder="${post.content}" th:text="${post.content}"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"th:text = "#{label.close}"></button>
+                                    <button type="submit" class="btn btn-primary" th:text = "#{label.save}"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+            </div>
+            </div>
+    </div>
+
+
+<br>
+
+
+    <div class="card my-4 " style="width:700px; margin-top: 200px; margin-left: 390px" sec:authorize="isAuthenticated()">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+            <form  th:action="${'/addComment'}" method="post">
+                <input type="hidden" name="postId" th:value="${post.id}">
+
+                <div class="form-group">
+                    <label th:text = "#{label.your_comment}"></label>
+                    <textarea class="form-control" name="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+         <!--   <div sec:authorize="hasRole('ROLE_USER')">
+                <br>
+                <form th:action="${'/addComment'}" method="post">
+                    <input type="hidden" name="postId" th:value="${post.id}">
+                    <div class="form-group">
+                        <label th:text = "#{label.your_comment}"></label>
+                        <textarea class="form-control" name="comment" rows="3"></textarea>
+                    </div>
+                    <div style="text-align: right">
+                        <button class="btn btn-outline-success html-editor-align-right" th:text = "#{label.addcomment}"></button>
+                    </div>
+                </form>
+            </div>-->
+
+<br>
+
+
+
+    <div class="comments " id="comments" style="width:700px; margin-left: 390px">
+                <h3 class="mb-2">Comments</h3>
+
+                <div class="comment mt-2 mb-2 row media mb-4" >
+                    <div class="comment-content col-md-11" th:each="comment : ${allComments}" style="background-color: #DADADA">
+
+                    <img class="d-flex mr-3 comment_ava" th:src="${comment.author.avatar}" alt="">
+                        <h6 class="small comment-meta"> <span th:text="${comment.author.name}"></span> <span th:text="${comment.postDate}"></span></h6>
+                            <div class="comment-body media-body">
+
+                                <p th:unless="${(adam!=null and adam.equals(comment.author))}" th:text="${comment.comment}">
+                                </p>
+
+
+                                    <form th:action="${'/changeComment'}" method="post" th:if="${#authentication.name.equals(comment.author.email)}">
+                                        <input type="hidden" name="postId" th:value="${post.id}">
+                                        <input type="hidden" name="comment_id" th:value="${comment.id}">
+                                        <div class="form-group">
+                                            <textarea class="form-control-plaintext" name="changedComment" rows="2" placeholder="${comment.comment}" th:text="${comment.comment}"></textarea>
+                                        </div>
+                                        <div style="text-align: right">
+                                            <button class="btn btn-outline-success html-editor-align-right mb-2">CHANGE COMMENT</button>
+                                        </div>
+                                    </form>
+                                    <form th:action="@{'/deleteComment'}" method="post"  th:if="${#authorization.expression('hasRole(''ROLE_MODERATOR'')') or (adam!=null and adam.equals(comment.author))}">
+                                        <input type="hidden" name="postId" th:value="${post.id}">
+                                        <input type="hidden" name="comment_id" th:value="${comment.id}">
+                                        <div style="text-align: right">
+                                            <button class="btn btn-outline-danger html-editor-align-right ml-1">DELETE COMMENT</button>
+                                        </div>
+                                    </form>
+
+                                <!--</div>-->
+
+                            </div>
+                        </div>
+                    <br><br>
+                </div>
+    </div>
+
+
+<br><br><br><br><br><br>
+
+</div>
+</html>
+
+<style>
+    .post{
+        align-content: center;
+        background-color: white;
+        width: 40%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+        margin-top: 20px;
+        margin-left: 390px;
+        margin-bottom: 40px;
+        border: 2px groove;
+
+        border-radius: 3px;
+
+    }
+    .center{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .comment_ava{
+        vertical-align: middle;
+        width:65px;
+        height: 65px;
+        border-radius: 50%;
+    }
+    .post_ava{
+        vertical-align: middle;
+        width:115px;
+        height:115px;
+        border-radius: 50%;
+    }
+    footer{
+        color:white;
+        background: #070707;
+        padding: 40px 0px 20px;
+    }
+
+
+
+    .footer-container{
+        max-width: 1350px;
+        margin: auto;
+        max-height: 135px;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+    }
+
+    .logo{
+        width: 210px;
+    }
+
+
+    .right-col h1{
+        font-size: 26px;
+        color:rgb(224, 222, 222);
+
+    }
+
+    .linee{
+        width: 100px;
+        height: 4px;
+        background: #d72323;
+    }
+
+    .newsletter-form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .txtb{
+        flex: 1;
+        padding: 18px 40px;
+        font-size: 16px;
+        color: #293043;
+        background: #ddd;
+        border: none;
+        font-weight: 700;
+        outline: none;
+        border-radius: 30px;
+        min-width: 260px;
+    }
+
+    .btn_block{
+        font-size: 16px;
+        color: #f1f1f1;
+        background: #be0000;
+        border: none;
+        font-weight: 300;
+        outline: none;
+        border-radius: 5px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: opacity .3s linear;
+    }
+
+    .btn_unblock{
+        font-size: 16px;
+        color: #f1f1f1;
+        background: #00a100;
+        border: none;
+        font-weight: 300;
+        outline: none;
+        border-radius: 5px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: opacity .3s linear;
+    }
+
+    .btn:hover{
+        opacity: .7;
+    }
+
+    .rights-text{
+        color:rgb(224, 222, 222);
+
+    }
+
+    .page-content{
+        min-height: 10vh;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (max-width:960px) {
+        .footer-container{
+            max-width: 600px;
+
+        }
+        .right-col{
+            width: 100%;
+            margin-bottom: 60px;
+        }
+
+        .center-col{
+            width: 100%;
+            text-align: center;
+        }
+
+        .left-col{
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+
+    @media screen and (max-width:700px){
+        .btn{
+            margin: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+</style>
