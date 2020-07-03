@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe622dce-ed2e-45e6-9013-2168d5ccb584" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebMVCConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebMVCConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/entities/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/entities/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/mainstyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/auth_reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/auth_reg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layouts/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/newsPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/newsPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/visit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/visit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/config/WebMVCConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/config/WebMVCConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/entities/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/entities/Users.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/messages_ru.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/mainstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/mainstyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/auth_reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/auth_reg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layouts/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/newsPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/newsPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/visit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/visit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/distens-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/distens-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/distens-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/distens-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.distens.DistensApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.project.distens.DistensApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.project.distens.DistensApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.project.distens.DistensApplicationTests.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +78,7 @@
       <workItem from="1593700875649" duration="1217000" />
       <workItem from="1593769583145" duration="1210000" />
       <workItem from="1593782348142" duration="1313000" />
-      <workItem from="1593803435985" duration="5702000" />
+      <workItem from="1593803435985" duration="7021000" />
     </task>
     <servers />
   </component>
