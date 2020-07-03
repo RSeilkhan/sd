@@ -19,6 +19,8 @@ public class WebMVCConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/images/**").addResourceLocations("classpath:/templates/images/");
+        registry
+                .addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
     }
     @Bean
     public ReloadableResourceBundleMessageSource messageSource(){

@@ -1,9 +1,11 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="layouts/main.html">
-<title layout:fragment="title">Authorization/Registration</title>
-
+<title layout:fragment="title">Authorization</title>
 <div layout:fragment = "contentPart">
+
+    <div class="alert alert-primary center" role="alert" th:text="#{label.success_reg}" th:if="${success}"></div>
+
 
     <div class="row register">
         <div class="col-auto" style="margin-left:auto; margin-right:auto;">

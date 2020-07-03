@@ -331,23 +331,28 @@ figcaption p{
 .post{
   align-content: center;
   background-color: white;
-  width: 85%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 390px;
   margin-bottom: 40px;
-  border: 1px groove;
+  border: 2px groove;
 
-  border-radius: 8px;
+  border-radius: 3px;
 
 }
 
+
 .comment_ava{
   vertical-align: middle;
-  width: 65px;
+  width:65px;
   height: 65px;
+  border-radius: 50%;
+}
+.post_ava{
+  vertical-align: middle;
+  width:115px;
+  height:115px;
   border-radius: 50%;
 }
 

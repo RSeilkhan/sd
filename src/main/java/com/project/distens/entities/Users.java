@@ -25,7 +25,6 @@ public class Users {
     @Column(name = "email")
     private String email;
 
-    @Size(min=3, max=50)
     @Column(name = "password")
     private String password;
 

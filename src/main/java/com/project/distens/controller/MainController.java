@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.websocket.server.PathParam;
 import java.util.*;
 
 
@@ -135,13 +137,9 @@ public class MainController {
         return "auth_reg";
     }
 
-    @GetMapping(value = "/register")
-    public String register(ModelMap model){
-        return "register";
-    }
-
     @PostMapping(value = "/register")
-    public String register( @RequestParam(name = "email") String email,
+    public String register(RedirectAttributes redirectAttributes,
+                           @RequestParam(name = "email") String email,
                            @RequestParam(name = "password") String password,
                            @RequestParam(name = "name") String name,
                            @RequestParam(name = "surName") String surName,
@@ -150,7 +148,7 @@ public class MainController {
                            @RequestParam(name = "tel_number") String tel_number,
                            @RequestParam(name = "city") String city,
                            @RequestParam(name = "about") String about,
-                            @RequestParam(name = "avatar") String avatar
+                           @RequestParam(name = "avatar") String avatar
 
 
     )
@@ -165,7 +163,9 @@ public class MainController {
             roles.add(userRole);
             user = new Users(email, password,  name, surName, true, roles,  gender, city,  tel_number,  about,  birthday, avatar);
             userService.registerUser(user);
-                redirect = "redirect:/auth_reg?registration_success";
+            redirectAttributes.addFlashAttribute("success","Everything good");
+
+            redirect = "redirect:/auth_reg?registration_success";
 
         }
 
@@ -428,21 +428,18 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/newsPage/{id}")
-    public String newsPage(ModelMap model,
+    @GetMapping(value = "/postDetails/{id}")
+    public String postDetails(ModelMap model,
                            @PathVariable(name = "id") Long id){
-
-        Optional<NewsPost> post = newsPostRepository.findById(id);
+        long a = id;
+        Optional<NewsPost> post = newsPostRepository.findById(a);
         //model.addAttribute("post", post.orElse(new NewsPost(null, "No Name", "No Name", "No Name", null, null)));
         model.addAttribute("post", post.orElse(new NewsPost(null, null, null, null, null, null)));
-
-        Role moderator = roleRepository.getOne(3L);
-        model.addAttribute("moderator", moderator);
 
         Role user = roleRepository.getOne(1L);
         model.addAttribute("user", user);
 
-        List<Comment> allComments = commentRepository.findByNewsPostId(id);
+        List<Comment> allComments = commentRepository.findByNewsPostId(a);
         model.addAttribute("allComments", allComments);
 
         Users adam = null;
@@ -453,7 +450,7 @@ public class MainController {
         }
         model.addAttribute("adam", adam);
 
-        return "newsPage";
+        return "post";
     }
 
     @PostMapping("/editPost")

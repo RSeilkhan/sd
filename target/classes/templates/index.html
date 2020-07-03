@@ -43,11 +43,11 @@ layout:decorator="layouts/main.html">
     <div class="container">
         <div class="well" th:each="post : ${allNews}">
             <div class="media">
-                <a class="pull-left" th:href="@{'newsPage/'+${post.id}}">
+                <a class="pull-left" th:href="@{'postDetails/'+${post.id}}">
                     <img class="media-object" th:src="${post.image}" width="150" height="150">
                 </a>
                 <div class="media-body">
-                    <a th:href="@{'newsPage/'+${post.id}}">
+                    <a th:href="@{'postDetails/'+${post.id}}">
                     <h3 class="media-heading" th:text="${post.title}"></h3>
                     </a>
                     <h5 class="text-right" th:text="${'By '+post.author.name + ' ' + post.author.surname}"></h5>
