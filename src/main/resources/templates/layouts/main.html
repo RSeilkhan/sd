@@ -17,9 +17,7 @@
 
     <div id="slideout-menu">
         <ul sec:authorize = "isAnonymous()">
-            <li>
-                <a th:href="@{/}" th:text = "#{label.home}"></a>
-            </li>
+
             <li>
                 <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
             </li>
@@ -39,9 +37,7 @@
 
         </ul>
         <ul sec:authorize = "isAuthenticated()">
-            <li>
-                <a th:href="@{/}" th:text = "#{label.home}"></a>
-            </li>
+
             <li>
                 <a  th:href="@{/profile}" th:text = "#{label.profile}"></a>
             </li>
@@ -91,9 +87,7 @@
             <i class="fa fa-bars"></i>
         </div>
         <ul sec:authorize = "isAnonymous()">
-            <li>
-                <a class="active" th:href="@{/}" th:text = "#{label.home}"></a>
-            </li>
+
             <li>
                 <a th:href="@{'/users_list'}" th:text = "#{label.user_list}"></a>
             </li>
@@ -105,7 +99,7 @@
                     <a >Language</a>
                     <div class="dropdown-content">
                         <a th:href="@{'?lang=ru'}"><span class="flag-icon flag-icon-ru"> </span>Russian</a>
-                        <a th:href="@{'?lang=en'}"><span class="flag-icon flag-icon-us"> </span>  English</a>
+                        <a th:href="@{'?lang=en'}"><span class="flag-icon flag-icon-us"> </span>English</a>
 
                     </div>
                 </div>
@@ -113,9 +107,6 @@
 
         </ul>
         <ul sec:authorize = "isAuthenticated()">
-            <li>
-                <a th:href="@{/}" th:text = "#{label.home}"></a>
-            </li>
             <li>
                 <a  th:href="@{/profile}" th:text = "#{label.profile}"></a>
             </li>
@@ -144,9 +135,7 @@
             <form  th:action = "@{'/exit'}" id = "logoutForm1">
             </form>
             <li>
-                <div id="logout-icon">
                     <a href="JavaScript:void(0)" onclick="logout1()"><i class="fa fa-sign-out"></i></a>
-                </div>
             </li>
 
         </ul>
