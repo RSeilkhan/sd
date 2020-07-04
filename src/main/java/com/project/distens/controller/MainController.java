@@ -83,12 +83,10 @@ public class MainController {
     @GetMapping(value = "/users/{email}") //visit profiles
     public String visit(ModelMap model, @PathVariable(name = "email") String email){
 
+        List<NewsPost> allNews = newsPostRepository.findByAuthorEmail(email);
+        model.addAttribute("allNews", allNews);
+
         Users user  = userRepository.findByEmail(email);
-        Users requester = userRepository.findByEmail(email);
-       // String userios = requester.getFriends().contains(userRepository.findByEmail(email));
-
-        //model.addAttribute("userFriend",  userios);
-
         model.addAttribute("allUsers",  user);
 
         return "visit_profile";
@@ -133,7 +131,7 @@ public class MainController {
     }
 
     @GetMapping(value = "/auth_reg")
-    public String auth_reg(ModelMap model){
+    public String auth_reg(){
         return "auth_reg";
     }
 

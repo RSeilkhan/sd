@@ -134,6 +134,9 @@
     <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.assertj:assertj-core:3.16.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:bootstrap:4.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:popper.js:1.14.3" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:mdbootstrap-bootstrap-material-design:4.8.8" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:3.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:stomp-websocket:2.3.3-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:sockjs-client:1.1.2" level="project" />

@@ -1,142 +1,263 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-
-      layout:decorator="layouts/main.html">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title layout:fragment="title">Account</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.js}" ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body class="bg" >
-
-<div layout:fragment = "contentPart">
-
-
-    <div class="container" style="margin-top:30px;width: 90%; max-width: 1340px;">
-        <div class="row">
-            <div class="col-md-3 bg-white sh shadow rounded" style="margin-bottom: 300px;">
-
-                <div style="margin-top: 30px;" th:each="u : ${allUsers}">
-                    <img class="avatar" style="margin-left:30px;" th:src="${u.avatar}">
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <a href="/"><h2>WebSocket</h2></a>
+        <p class="lead">WebSocket Chat - with STOMP & SockJS.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="text" id="from" class="form-control" placeholder="Choose a nickname"/>
+                    <div class="btn-group">
+                        <button type="button" id="connect" class="btn btn-sm btn-outline-secondary" onclick="connect()">Connect</button>
+                        <button type="button" id="disconnect" class="btn btn-sm btn-outline-secondary" onclick="disconnect()" disabled>Disconnect</button>
+                    </div>
                 </div>
-                <hr class="hr-shelf">
-                <h3 style="margin-top: 20px;" th:text="#{label.status}"></h3>
-                <ul class="nav nav-pills flex-column">
-
-                    <li class="nav-item" style="margin-bottom: 20px;">
-                        <a class="nav-link disabled" href="#">Gallery</a>
+            </div>
+            <div class="mb-3" id="users" style="display: none;">
+                <span id="active-users-span"></span>
+                <ul id="active-users" class="list-group list-group-horizontal-sm">
+                    <!--/*-->
+                    <!--/*/
+                    <div th:with="condition=${#lists.size(activeUsers)}" th:remove="tag">
+                        <p th:if="${condition}"><i>No active users found.</i></p>
+                        <p th:unless="${condition}" class="text-muted">click on user to begin chat</p>
+                    </div>
+                    <li th:each="username ${activeUsers}" class="list-group-item">
+                        <a class="active-user" href="javascript:void(0)" onclick="setSelectedUser('${username}')">${username}</a>
                     </li>
-
+                    /*/-->
+                    <!--*/-->
                 </ul>
-                <hr class="d-sm-none">
-
-
-
             </div>
-        </div>
-        <br>
-        <div class="col-md-8 bg-white shadow" style="margin-left: 10px">
-            <h2 style="margin-top: 20px; font-size: 25px;" th:text="#{label.about_me}"></h2>
-
-            <div class="table-responsive">
-
-                <!--Table-->
-                <table class="table" style="font-size: 20px;" th:each="u : ${allUsers}">
-                    <tbody>
-                    <tr>
-                        <th scope="row" th:text = "#{label.name}"></th>
-                        <td th:text="${u.name}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" th:text = "#{label.age}"></th>
-                        <td th:text="${u.birthday}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" th:text = "#{label.city}"></th>
-                        <td th:text="${u.city}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" th:text = "#{label.gender}"></th>
-                        <td th:text="${u.gender}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" th:text = "#{label.tel_number}"></th>
-                        <td th:text="${u.tel_number}"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" th:text = "#{label.email}"></th>
-                        <td th:text="${u.email}"></td>
-                    </tr>
-
-                    </tbody>
-                    <!--Table body-->
-
-                </table>
-                <!--Table-->
-                <br>
-                <h4 th:text = "#{label.about_me}"></h4>
-                <p th:text="${u.about}"></p>
-                <br>
+            <div id="divSelectedUser" class="mb-3" style="display: none;">
+                <span id="selectedUser" class="badge badge-secondary"></span> Selected
             </div>
-
-
-            <div class="">
-                <div class="well" style="" th:each="post : ${allNews}">
-                    <div class="media">
-                        <a class="pull-left" th:href="@{'newsPage/'+${post.id}}">
-                            <div class="post_image_div">
-                                <img class="media-object" th:src="${post.image}" width="100%">
-                            </div>
-                        </a>
-                        <div class="media-bod">
-                            <a th:href="@{'newsPage/'+${post.id}}">
-
-                                <h3 class="media-heading" th:text="${post.title}"></h3>
-                            </a>
-                            <h5 class="text-right" th:text="${'By '+post.author.name + ' ' + post.author.surname}"></h5>
-                            <p  th:text="${post.content}"></p>
-                            <ul class="list-inline list-unstyled">
-                                <li><span th:value="${post.postDate}" class="glyphicon glyphicon-calendar"></span>
-                                <li>|</li>
-                                <span><i class="glyphicon glyphicon-comment"></i> 3 comments</span>
-                                <li>|</li>
-                                <li>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </li>
-                                <li>|</li>
-                                <li>
-                                    <span><i class="fa fa-facebook-square"></i></span>
-                                    <span><i class="fa fa-twitter-square"></i></span>
-                                    <span><i class="fa fa-google-plus-square"></i></span>
-                                </li>
-                            </ul>
-                        </div>
+            <div class="mb-3">
+                <div class="input-group" id="sendmessage" style="display: none;">
+                    <input type="text" id="message" class="form-control" placeholder="Message">
+                    <div class="input-group-append">
+                        <button id="send" class="btn btn-primary" onclick="send()">Send</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div id="content"></div>
+            <div>
+                        <span class="float-right">
+                            <button id="clear" class="btn btn-primary" onclick="clearMessages()" style="display: none;">Clear</button>
+                        </span>
+            </div>
+            <div id="response"></div>
+        </div>
     </div>
-    <script>
-        $(function() {
-            // Sidebar toggle behavior
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar, #content').toggleClass('active');
-            });
-        });
-    </script>
-
-
-
-
 </div>
+
+
+<script th:src="@{/webjars/sockjs-client/1.1.2/sockjs.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/stomp-websocket/2.3.3-1/stomp.js}" type="text/javascript"></script>
+<script type="text/javascript">
+    var stompClient = null;
+    var selectedUser = null;
+    var userName = $("#from").val();
+
+    function setConnected(connected) {
+        $("#from").prop("disabled", connected);
+        $("#connect").prop("disabled", connected);
+        $("#disconnect").prop("disabled", !connected);
+        if (connected) {
+            $("#users").show();
+            $("#sendmessage").show();
+        } else {
+            $("#users").hide();
+            $("#sendmessage").hide();
+        }
+    }
+
+    function connect() {
+        userName = $("#from").val();
+        if (userName == null || userName === "") {
+            alert('Please input a nickname!');
+            return;
+        }
+        $.post('/rest/user-connect',
+            { username: userName },
+            function(remoteAddr, status, xhr) {
+                var socket = new SockJS('/chat');
+                stompClient = Stomp.over(socket);
+                stompClient.connect({username: userName}, function () {
+                    stompClient.subscribe('/topic/broadcast', function (output) {
+                        showMessage(createTextNode(JSON.parse(output.body)));
+                    });
+
+                    stompClient.subscribe('/topic/active', function () {
+                        updateUsers(userName);
+                    });
+
+                    stompClient.subscribe('/user/queue/messages', function (output) {
+                        showMessage(createTextNode(JSON.parse(output.body)));
+                    });
+
+                    sendConnection(' connected to server');
+                    setConnected(true);
+                }, function (err) {
+                    alert('error' + err);
+                });
+
+            }).done(function() {
+            // alert('Request done!');
+        }).fail(function(jqxhr, settings, ex) {
+                console.log('failed, ' + ex);
+            }
+        );
+    }
+
+    function disconnect() {
+        if (stompClient != null) {
+            $.post('/rest/user-disconnect',
+                { username: userName },
+                function() {
+                    sendConnection(' disconnected from server');
+
+                    stompClient.disconnect(function() {
+                        console.log('disconnected...');
+                        setConnected(false);
+                    });
+
+                }).done(function() {
+                // alert('Request done!');
+            }).fail(function(jqxhr, settings, ex) {
+                    console.log('failed, ' + ex);
+                }
+            );
+        }
+    }
+
+    function sendConnection(message) {
+        var text = userName + message;
+        sendBroadcast({'from': 'server', 'text': text});
+
+        // for first time or last time, list active users:
+        updateUsers(userName);
+    }
+
+    function sendBroadcast(json) {
+        stompClient.send("/app/broadcast", {}, JSON.stringify(json));
+    }
+
+    function send() {
+        var text = $("#message").val();
+        if (selectedUser == null) {
+            alert('Please select a user.');
+            return;
+        }
+        stompClient.send("/app/chat", {'sender': userName},
+            JSON.stringify({'from': userName, 'text': text, 'recipient': selectedUser}));
+        $("#message").val("");
+    }
+
+    function createTextNode(messageObj) {
+        var classAlert = 'alert-info';
+        var fromTo = messageObj.from;
+        var addTo =  fromTo;
+
+        if (userName == messageObj.from) {
+            fromTo = messageObj.recipient;
+            addTo =  'to: ' + fromTo;
+        }
+
+        if (userName != messageObj.from && messageObj.from != "server") {
+            classAlert = "alert-warning";
+        }
+
+        if (messageObj.from != "server") {
+            addTo = '<a href="javascript:void(0)" onclick="setSelectedUser(\'' + fromTo + '\')">' + addTo + '</a>'
+        }
+        return '<div class="row alert ' + classAlert + '"><div class="col-md-8">' +
+            messageObj.text +
+            '</div><div class="col-md-4 text-right"><small>[<b>' +
+            addTo +
+            '</b> ' +
+            messageObj.time +
+            ']</small>' +
+            '</div></div>';
+    }
+
+    function showMessage(message) {
+        $("#content").html($("#content").html() + message);
+        $("#clear").show();
+    }
+
+    function clearMessages() {
+        $("#content").html("");
+        $("#clear").hide();
+    }
+
+    function setSelectedUser(username) {
+        selectedUser = username;
+        $("#selectedUser").html(selectedUser);
+        if ($("#selectedUser").html() == "") {
+            $("#divSelectedUser").hide();
+        }
+        else {
+            $("#divSelectedUser").show();
+        }
+    }
+
+    function updateUsers(userName) {
+        // console.log('List of users : ' + userList);
+        var activeUserSpan = $("#active-users-span");
+        var activeUserUL = $("#active-users");
+
+        var index;
+        activeUserUL.html('');
+
+        var url = '/rest/active-users-except/' + userName;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            // data: data,
+            dataType: 'json', // ** ensure you add this line **
+            success: function(userList) {
+                if (userList.length == 0) {
+                    activeUserSpan.html('<p><i>No active users found.</i></p>');
+                }
+                else {
+                    activeUserSpan.html('<p class="text-muted">click on user to begin chat</p>');
+
+                    for (index = 0; index < userList.length; ++index) {
+                        if (userList[index] != userName) {
+                            activeUserUL.html(activeUserUL.html() + createUserNode(userList[index], index));
+                        }
+                    }
+                    /*
+                    $.each(userList, function(index, item) {
+                        //now you can access properties using dot notation
+                    });
+                    */
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("error occurred");
+            }
+        });
+    }
+
+    function createUserNode(username, index) {
+        return '<li class="list-group-item">' +
+            '<a class="active-user" href="javascript:void(0)" onclick="setSelectedUser(\'' + username + '\')">' + username + '</a>' +
+            '</li>';
+    }
+</script>
 </body>
 </html>
