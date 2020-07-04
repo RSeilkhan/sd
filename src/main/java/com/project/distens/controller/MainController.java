@@ -389,7 +389,7 @@ public class MainController {
     @GetMapping(value = "/")
     public String index(ModelMap model){
 
-        List<NewsPost> allNews = newsPostRepository.findAll();
+        List<NewsPost> allNews = newsPostRepository.findAllByDate();
         model.addAttribute("allNews", allNews);
 
         List<Users> user = userRepository.findAll();

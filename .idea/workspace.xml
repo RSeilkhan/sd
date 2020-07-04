@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe622dce-ed2e-45e6-9013-2168d5ccb584" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/repositories/NewsPostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/repositories/NewsPostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/repositories/NewsPostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/repositories/NewsPostRepository.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +86,8 @@
       <workItem from="1593782348142" duration="1313000" />
       <workItem from="1593803435985" duration="8256000" />
       <workItem from="1593824422920" duration="5667000" />
-      <workItem from="1593864425924" duration="1768000" />
+      <workItem from="1593864425924" duration="2341000" />
+      <workItem from="1593867739533" duration="465000" />
     </task>
     <servers />
   </component>
