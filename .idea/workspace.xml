@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe622dce-ed2e-45e6-9013-2168d5ccb584" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_bootstrap_4_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_mdbootstrap_bootstrap_material_design_4_8_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_popper_js_1_14_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distens.iml" beforeDir="false" afterPath="$PROJECT_DIR$/distens.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebMVCConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebMVCConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/distens/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/distens/entities/ChatMessages.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layouts/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sockjs-message.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sockjs-message.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/testing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/visit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/visit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/visit_profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/visit_profiles.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/demo/config/WebSocketConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/config/WebMVCConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/config/WebMVCConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/project/distens/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/project/distens/entities/ChatMessages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/layouts/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/layouts/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/sockjs-message.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/sockjs-message.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/testing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/visit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/visit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/visit_profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/visit_profiles.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +82,7 @@
       <workItem from="1593782348142" duration="1313000" />
       <workItem from="1593803435985" duration="8256000" />
       <workItem from="1593824422920" duration="5667000" />
+      <workItem from="1593864425924" duration="199000" />
     </task>
     <servers />
   </component>

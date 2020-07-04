@@ -7,11 +7,9 @@ com\project\distens\DistensApplication.class
 com\project\distens\util\User.class
 com\project\distens\config\SecurityConfig.class
 com\project\distens\util\StringUtils.class
-com\project\distens\entities\ChatMessages.class
 com\project\distens\controller\WebSocketConnectionRestController.class
 com\project\distens\util\UserInterceptor.class
 com\project\distens\handler\MyTextWebSocketHandler.class
-com\project\demo\config\WebSocketConfig.class
 com\project\distens\util\ActiveUserChangeListener.class
 com\project\distens\services\UserService.class
 com\project\distens\repositories\UserRepository.class

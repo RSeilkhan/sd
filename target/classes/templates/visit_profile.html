@@ -88,16 +88,13 @@
                 <div class="">
                     <div class="well" style="" th:each="post : ${allNews}">
                         <div class="media">
-                            <a class="pull-left" th:href="@{'newsPage/'+${post.id}}">
+                            <a class="pull-left" href="#">
                                 <div class="post_image_div">
                                     <img class="media-object" th:src="${post.image}" width="100%">
                                 </div>
                             </a>
                             <div class="media-bod">
-                                <a th:href="@{'newsPage/'+${post.id}}">
-
-                                    <h3 class="media-heading" th:text="${post.title}"></h3>
-                                </a>
+                                <h3 class="media-heading" th:text="${post.title}"></h3>
                                 <h5 class="text-right" th:text="${'By '+post.author.name + ' ' + post.author.surname}"></h5>
                                 <p  th:text="${post.content}"></p>
                                 <ul class="list-inline list-unstyled">
